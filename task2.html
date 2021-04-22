@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/vue"></script>
+    <title>To Do</title>
+    <script>
+        var completedTasksHolder = document.getElementById("completed-tasks"); //completed-tasks
+        var allTasksHolder = document.getElementById("all-tasks"); //all-tasks
+        var activeTasksHolder = document.getElementById("active-tasks"); //active-tasks
+        function newElement() {
+
+
+
+            var li = document.createElement("li");
+            var inputValue = document.getElementById("myInput").value;
+            var t = document.createTextNode(inputValue);
+            li.appendChild(t);
+            if (inputValue === '') {
+                alert("You must write something in your TODO!");
+            } else {
+
+
+                document.getElementById("myUL").appendChild(li);
+
+            }
+
+
+            document.getElementById("myInput").value = "";
+
+
+            var span1 = document.createElement("SPAN1");
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            span1.className = "active";
+            span1.appendChild(checkbox);
+            li.appendChild(span1);
+            var active = document.getElementsByClassName("active");
+
+
+
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            li.appendChild(span);
+            var close = document.getElementsByClassName("close");
+            var i;
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function() {
+                    var div = this.parentElement;
+                    div.style.display = "none";
+                }
+
+            }
+            // Add a "checked" symbol when clicking on a list item
+            var list = document.querySelector('ul');
+            list.addEventListener('click', function(ev) {
+                if (ev.target.tagName === 'LI') {
+                    ev.target.classList.toggle('checked');
+        
+                }
+            }, false);
+        }
+
+        function allt() {
+            alert('Isnt completed yet')
+        };
+
+        function active() {
+            alert('Isnt completed yet')
+        };
+
+        function completed() {
+            alert('Isnt completed yet')
+
+        };
+    </script>
+
+
+    <style>
+        body {
+            background-color: hsl(236, 33%, 92%);
+        }
+        
+        .k1 {
+            background-image: url(https://raw.githubusercontent.com/Mohamed-Ibrahim-01/BEAT_IT/main/task_2/react_task/images/bg-desktop-light.jpg);
+            background-size: cover;
+            padding: 90px;
+            color: hsl(236, 33%, 92%);
+            font-family: Josefin Sans;
+            font-size: 18px;
+            font-weight: 400, 700;
+        }
+        
+        h1 {
+            margin-left: 480px;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        /* Remove margins and padding from the list */
+        
+        ul {
+            margin: 0;
+            margin-left: 45%;
+            padding: 0;
+            width: 45%;
+        }
+        /* Style the list items */
+        
+        ul li {
+            cursor: pointer;
+            position: relative;
+            padding: 12px 8px 12px 40px;
+            background: #eee;
+            font-size: 18px;
+            transition: 0.2s;
+            border-radius: 15px;
+            width: 45%;
+        }
+        /* Set all odd list items to a different color (zebra-stripes) */
+        
+        ul li:nth-child(odd) {
+            background: #f9f9f9;
+            border-radius: 15px;
+            width: 45%;
+        }
+        /* Darker background-color on hover */
+        
+        ul li:hover {
+            background: hsl(236, 33%, 92%);
+        }
+        /* When clicked on, add a background color and strike out text */
+        
+        ul li.checked {
+            text-decoration: line-through;
+        }
+        /* Add a "checked" mark when clicked on */
+        
+        ul li.checked::before {
+            content: '';
+            position: absolute;
+            border-color: #fff;
+            border-style: solid;
+            border-width: 0 2px 2px 0;
+            top: 10px;
+            left: 16px;
+            transform: rotate(45deg);
+            height: 15px;
+            width: 7px;
+        }
+        /* Style the close button */
+        
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px 12px 16px;
+        }
+        
+        .close:hover {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .active {
+            background-color: transparent;
+            border: 1px solid rgb(143, 135, 135);
+            border-radius: 50%;
+            cursor: pointer;
+            height: 28px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 28px;
+            margin-top: 3.5%;
+        }
+        
+        .active:hover {
+            background-color: rgb(78, 9, 134);
+            color: rgb(128, 20, 26);
+        }
+        
+        .active input[type="checkbox"] {
+            visibility: hidden;
+        }
+        /* Style the header */
+        
+        .header {
+            color: white;
+            margin-left: 38%;
+            text-align: center;
+        }
+        /* Clear floats after the header */
+        
+        .header:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Style the input */
+        
+        input {
+            border: none;
+            border-radius: 15px;
+            width: 45%;
+            float: left;
+            padding: 10px;
+            font-size: 16px;
+        }
+        /* Style the "Add" button */
+        
+        .addBtn {
+            padding: 10px;
+            background-color: white;
+            color: rgb(104, 116, 112);
+            float: left;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 15px;
+        }
+        
+        .addBtn:hover {
+            background-color: #bbb;
+        }
+        
+        .btnall {
+            margin-left: 46%;
+            border-radius: 12px;
+        }
+        
+        button {
+            border-radius: 12px;
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="k1">
+        <h1> T O D O</h1>
+        <div id="myDIV" class="header">
+            <input type="text" id="myInput" placeholder="Create a new to do...">
+            <span onclick="newElement()" class="addBtn">Create</span>
+        </div>
+    </div>
+
+
+    <ul id="myUL">
+
+
+
+    </ul>
+
+
+    </div>
+    <div id="myBtnContainer">
+        <button class="btnall" id=c1 onclick="allt()"> All</button>
+        <button class="btnactive" id=c2 onclick="active()"> Active</button>
+        <button class="btncompleted" id=c3 onclick="completed()"> Completed</button>
+    </div>
+
+
+
+
+</body>
+
+
+</html>
